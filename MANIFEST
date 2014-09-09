@@ -24,3 +24,4 @@ t/runtests
 t/runtests.bat
 t/simple.t
 META.yml
+.travis.yml
