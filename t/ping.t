@@ -1,11 +1,15 @@
 #!/usr/bin/perl -w
 
-use Test::Inter;
-$t = new Test::Inter 'Ping tests';
+BEGIN {
+  use Test::Inter;
+  $t = new Test::Inter 'Ping tests';
+}
+
 $testdir = '';
 $testdir = $t->testdir();
 
-use Net::Ping::External;
+BEGIN { $t->use_ok('Net::Ping::External') }
+
 use Data::Checker;
 $obj   = new Data::Checker;
 
