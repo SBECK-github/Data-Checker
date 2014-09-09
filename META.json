@@ -1,0 +1,71 @@
+{
+   "abstract" : "a framework for checking data validity",
+   "author" : [
+      "Sullivan Beck <sbeck@cpan.org>"
+   ],
+   "dynamic_config" : 1,
+   "generated_by" : "Module::Build version 0.4205",
+   "license" : [
+      "perl_5"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : "2"
+   },
+   "name" : "Data-Checker",
+   "prereqs" : {
+      "build" : {
+         "requires" : {
+            "Module::Build" : "0.21"
+         }
+      },
+      "configure" : {
+         "requires" : {
+            "Module::Build" : "0.21"
+         }
+      },
+      "runtime" : {
+         "requires" : {
+            "Module::Loaded" : "0",
+            "Net::DNS" : "0",
+            "Net::Ping" : "0",
+            "NetAddr::IP" : "4.073",
+            "NetAddr::IP::Lite" : "0",
+            "Parallel::ForkManager" : "0",
+            "perl" : "5.008"
+         }
+      },
+      "test" : {
+         "requires" : {
+            "Net::Ping::External" : "0",
+            "Test::Inter" : "0",
+            "Test::More" : "0"
+         }
+      }
+   },
+   "provides" : {
+      "Data::Checker" : {
+         "file" : "lib/Data/Checker.pm",
+         "version" : "1.02"
+      },
+      "Data::Checker::DNS" : {
+         "file" : "lib/Data/Checker/DNS.pm",
+         "version" : "1.02"
+      },
+      "Data::Checker::IP" : {
+         "file" : "lib/Data/Checker/IP.pm",
+         "version" : "1.02"
+      },
+      "Data::Checker::Ping" : {
+         "file" : "lib/Data/Checker/Ping.pm",
+         "version" : "1.02"
+      }
+   },
+   "release_status" : "stable",
+   "resources" : {
+      "license" : [
+         "http://dev.perl.org/licenses/"
+      ]
+   },
+   "version" : "1.02"
+}

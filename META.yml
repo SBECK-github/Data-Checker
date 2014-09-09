@@ -1,0 +1,42 @@
+---
+abstract: 'a framework for checking data validity'
+author:
+  - 'Sullivan Beck <sbeck@cpan.org>'
+build_requires:
+  Module::Build: '0.21'
+  Net::Ping::External: '0'
+  Test::Inter: '0'
+  Test::More: '0'
+configure_requires:
+  Module::Build: '0.21'
+dynamic_config: 1
+generated_by: 'Module::Build version 0.4205, CPAN::Meta::Converter version 2.141170'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: '1.4'
+name: Data-Checker
+provides:
+  Data::Checker:
+    file: lib/Data/Checker.pm
+    version: '1.02'
+  Data::Checker::DNS:
+    file: lib/Data/Checker/DNS.pm
+    version: '1.02'
+  Data::Checker::IP:
+    file: lib/Data/Checker/IP.pm
+    version: '1.02'
+  Data::Checker::Ping:
+    file: lib/Data/Checker/Ping.pm
+    version: '1.02'
+requires:
+  Module::Loaded: '0'
+  Net::DNS: '0'
+  Net::Ping: '0'
+  NetAddr::IP: '4.073'
+  NetAddr::IP::Lite: '0'
+  Parallel::ForkManager: '0'
+  perl: '5.008'
+resources:
+  license: http://dev.perl.org/licenses/
+version: '1.02'
