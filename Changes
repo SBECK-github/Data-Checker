@@ -17,3 +17,7 @@ Any suggestions, bug reports, or donations :-) should be sent to me.
     of them.  This adds a workaround for some broken versions of
     Net::DNS.  (RT 98598)
 
+1.03
+  - Minor changes to some tests
+  - Put distro on GitHub
+
