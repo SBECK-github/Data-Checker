@@ -12,6 +12,7 @@ my %module_prereq = (
    'Module::Loaded'           => '0',
    'Net::DNS'                 => '0',
    'Net::Ping'                => '0',
+   'Net::Ping::External'      => '0',
    'NetAddr::IP'              => '4.073',
    'NetAddr::IP::Lite'        => '0',
    'Parallel::ForkManager'    => '0',
