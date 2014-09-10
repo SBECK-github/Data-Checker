@@ -9,6 +9,7 @@ require 5.008;
 use warnings 'all';
 use strict;
 use Net::Ping;
+use Net::Ping::External;
 
 our($VERSION);
 $VERSION='1.03';

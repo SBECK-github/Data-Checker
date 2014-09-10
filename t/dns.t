@@ -14,7 +14,7 @@ $obj   = new Data::Checker;
 use Net::DNS;
 
 # Net::DNS fails with some versions:
-#   Okay: 0.74 0.77 0.78
+#   Okay: 0.74 0.77 0.78 0.80 (?)
 #   Fail: 0.75 0.76 0.79
 
 my $v    = $Net::DNS::VERSION;
