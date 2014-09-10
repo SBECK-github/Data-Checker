@@ -20,7 +20,6 @@ my %script_prereq = (
 );
 
 my %test_prereq = (
-   'Net::Ping::External'      => '0',
    'Test::Inter'              => '0',
    'Test::More'               => '0',
 );
@@ -38,7 +37,7 @@ if ($EU_MM_V < 6.64) {
 
 WriteMakefile(
    NAME             => "Data::Checker",
-   VERSION          => "1.02",
+   VERSION          => "1.03",
    ABSTRACT         => "a framework for checking data validity",
    LICENSE          => "perl",
    ($EU_MM_V >= 6.48
@@ -54,4 +53,27 @@ WriteMakefile(
    ($EU_MM_V >= 6.64
     ? (TEST_REQUIRES   => \%test_prereq)
     : ()),
+
+   ($EU_MM_V > 6.45
+    ? (META_MERGE => {
+        resources => {
+           repository => {
+              type => "git",
+              web  => "https://github.com/SBECK-github/Data-Checker",
+              url  => "git://github.com/SBECK-github/Data-Checker.git",
+           }
+        }
+       })
+    : ()),
+   EXE_FILES        => [
+                        '.git/hooks/pre-commit.sample',
+                        '.git/hooks/post-update.sample',
+                        '.git/hooks/pre-applypatch.sample',
+                        '.git/hooks/applypatch-msg.sample',
+                        '.git/hooks/update.sample',
+                        '.git/hooks/pre-rebase.sample',
+                        '.git/hooks/pre-push.sample',
+                        '.git/hooks/commit-msg.sample',
+                        '.git/hooks/prepare-commit-msg.sample',
+                       ],
 );
