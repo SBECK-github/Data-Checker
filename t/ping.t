@@ -8,7 +8,7 @@ BEGIN {
 $testdir = '';
 $testdir = $t->testdir();
 
-BEGIN { $t->use_ok('Net::Ping::External') }
+use Net::Ping::External;
 
 use Data::Checker;
 $obj   = new Data::Checker;
