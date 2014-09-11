@@ -38,7 +38,7 @@ if ($EU_MM_V < 6.64) {
 
 WriteMakefile(
    NAME             => "Data::Checker",
-   VERSION          => "1.03",
+   VERSION          => "1.04",
    ABSTRACT         => "a framework for checking data validity",
    LICENSE          => "perl",
    ($EU_MM_V >= 6.48

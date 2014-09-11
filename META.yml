@@ -18,16 +18,16 @@ name: Data-Checker
 provides:
   Data::Checker:
     file: lib/Data/Checker.pm
-    version: '1.03'
+    version: '1.04'
   Data::Checker::DNS:
     file: lib/Data/Checker/DNS.pm
-    version: '1.03'
+    version: '1.04'
   Data::Checker::IP:
     file: lib/Data/Checker/IP.pm
-    version: '1.03'
+    version: '1.04'
   Data::Checker::Ping:
     file: lib/Data/Checker/Ping.pm
-    version: '1.03'
+    version: '1.04'
 requires:
   Module::Loaded: '0'
   Net::DNS: '0'
@@ -40,4 +40,4 @@ requires:
 resources:
   license: http://dev.perl.org/licenses/
   repository: https://github.com/SBECK-github/Data-Checker
-version: '1.03'
+version: '1.04'
