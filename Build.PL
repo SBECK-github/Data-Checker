@@ -42,7 +42,7 @@ my $class = Module::Build->subclass(
 
 my $build = $class->new(
       module_name        => "Data::Checker",
-      dist_version       => "1.04",
+      dist_version       => "1.05",
       dist_abstract      => "a framework for checking data validity",
       license            => "perl",
       dist_author        => "Sullivan Beck <sbeck\@cpan.org>",

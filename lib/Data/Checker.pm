@@ -12,7 +12,7 @@ use Module::Loaded;
 use Parallel::ForkManager 0.7.6;
 
 our($VERSION);
-$VERSION='1.04';
+$VERSION='1.05';
 
 ###############################################################################
 # BASE METHODS
