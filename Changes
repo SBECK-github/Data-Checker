@@ -20,3 +20,8 @@ Any suggestions, bug reports, or donations :-) should be sent to me.
 1.03  2014-09-11
   - Minor changes to some tests
   - Put distro on GitHub.  Gabor Szabo
+
+1.04  2014-09-15
+  - Fixed a problem related to the new .git directory that prevented
+    it from installing correctly.
+
