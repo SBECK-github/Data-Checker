@@ -4,7 +4,7 @@
       "Sullivan Beck <sbeck@cpan.org>"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "Module::Build version 0.4205",
+   "generated_by" : "Module::Build version 0.4003, CPAN::Meta::Converter version 2.142060",
    "license" : [
       "perl_5"
    ],
@@ -16,7 +16,9 @@
    "prereqs" : {
       "build" : {
          "requires" : {
-            "Module::Build" : "0.21"
+            "Module::Build" : "0.21",
+            "Test::Inter" : "0",
+            "Test::More" : "0"
          }
       },
       "configure" : {
@@ -34,12 +36,6 @@
             "NetAddr::IP::Lite" : "0",
             "Parallel::ForkManager" : "0",
             "perl" : "5.008"
-         }
-      },
-      "test" : {
-         "requires" : {
-            "Test::Inter" : "0",
-            "Test::More" : "0"
          }
       }
    },

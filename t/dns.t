@@ -74,62 +74,61 @@ $tests=q(
    INFO
    WARN
 
-[ cpan.org aaa.bbb.ccc ]
+[ iana.org xyzxyz.iana.org ]
    =>
    PASS
-   cpan.org
+   iana.org
    FAIL
-   'aaa.bbb.ccc Host is not defined in DNS'
+   'xyzxyz.iana.org Host is not defined in DNS'
    INFO
    WARN
 
-[ cpan.org aaa.bbb.ccc ] { dns __undef__ }
+[ iana.org xyzxyz.iana.org ] { dns __undef__ }
    =>
    PASS
-   cpan.org
+   iana.org
    FAIL
-   'aaa.bbb.ccc Host is not defined in DNS'
+   'xyzxyz.iana.org Host is not defined in DNS'
    INFO
    WARN
 
-[ cpan.org aaa.bbb.ccc ] { dns { negate 1 } }
+[ iana.org xyzxyz.iana.org ] { dns { negate 1 } }
    =>
    PASS
-   aaa.bbb.ccc
+   xyzxyz.iana.org
    FAIL
-   'cpan.org Host is already in DNS'
+   'iana.org Host is already in DNS'
    INFO
    WARN
 
-{ cpansearch.perl.org { ip [ 199.15.177.149 ] } www.pm.org { ip [ 1.2.3.4 ] } }
+{ iana.org { ip [ 192.0.43.8 ] } blackhole-1.iana.org { ip [ 1.2.3.4 ] } }
 { dns __undef__ expected_ip __undef__ }
    =>
    PASS
-   cpansearch.perl.org
+   iana.org
    FAIL
-   'www.pm.org DNS ip value does not match expected value'
+   'blackhole-1.iana.org DNS ip value does not match expected value'
    INFO
    WARN
 
-[ cpansearch.perl.org blogs.perl.org www.pm.org ]
-{ dns __undef__ expected_domain { value perl.org } }
+[ blackhole-1.iana.org www.ufl.edu ]
+{ dns __undef__ expected_domain { value iana.org } }
    =>
    PASS
-   blogs.perl.org
-   cpansearch.perl.org
+   blackhole-1.iana.org
    FAIL
-   'www.pm.org DNS domain value does not match expected value'
+   'www.ufl.edu DNS domain value does not match expected value'
    INFO
    WARN
 
-{ cpansearch.perl.org { domain perl.org } blogs.perl.org { domain [ perl.org perl.com ] } www.pm.org { domain perl.org } }
+{ blackhole-1.iana.org { domain iana.org } blackhole-2.iana.org { domain [ iana.org perl.com ] } prisoner.iana.org { domain perl.com } }
 { dns __undef__ expected_domain __undef__ }
    =>
    PASS
-   blogs.perl.org
-   cpansearch.perl.org
+   blackhole-1.iana.org
+   blackhole-2.iana.org
    FAIL
-   'www.pm.org DNS domain value does not match expected value'
+   'prisoner.iana.org DNS domain value does not match expected value'
    INFO
    WARN
 

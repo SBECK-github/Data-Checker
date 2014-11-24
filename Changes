@@ -25,3 +25,7 @@ Any suggestions, bug reports, or donations :-) should be sent to me.
   - Fixed a problem related to the new .git directory that prevented
     it from installing correctly.
 
+1.05
+  - Fixed dns.t file.  Thanks to two CPAN testers (Nigel Horne and
+    Chris Williams) for assisting me in finding the offending test.
+

@@ -322,6 +322,9 @@ SEE ALSO
     Data::Checker::Ping
         Predefined checks to see if a host reponds to pings.
 
+    Data::Checker::IP
+        Predefined checks to see if an element is a valid IP.
+
 LICENSE
     This script is free software; you can redistribute it and/or modify it
     under the same terms as Perl itself.

@@ -383,6 +383,10 @@ Predefined DNS checks.
 
 Predefined checks to see if a host reponds to pings.
 
+=item Data::Checker::IP
+
+Predefined checks to see if an element is a valid IP.
+
 =back
 
 =head1 LICENSE
