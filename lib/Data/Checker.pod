@@ -1,4 +1,4 @@
-# Copyright (c) 2013-2014 Sullivan Beck. All rights reserved.
+# Copyright (c) 2013-2015 Sullivan Beck. All rights reserved.
 # This program is free software; you can redistribute it and/or modify it
 # under the same terms as Perl itself.
 
@@ -85,7 +85,7 @@ This returns the version of this module.
 
 In many cases, tests can be run in parallel to speed things up.  By
 default, all tests will be run serially (one at a time) but that
-behavior can be changed using this method.  $n must be a positive
+behavior can be changed using this method.  C<$n> must be a positive
 integer (or zero):
 
    $n=1  All tests are run serially. This is the default.
@@ -101,21 +101,21 @@ integer (or zero):
    ($pass,$fail,$warn,$info) = $obj->check($data,$check,$check_opts);
 
 This is the function which actually performs the checks.  It takes a
-set of elements ($data) and verifies them using the checks specified
-by $check and $check_opts.  It returns a list of elements that pass
+set of elements (C<$data>) and verifies them using the checks specified
+by C<$check> and C<$check_opts>.  It returns a list of elements that pass
 the check and a list that fail the check.  In addition, informational
 notes and warnings about the elements may also be returned.
 
-The data is passed in as a single data structure ($data) as described
-below in the SPECIFYING DATA section.
+The data is passed in as a single data structure (C<$data>) as described
+below in the L</"SPECIFYING DATA"> section.
 
-$check specifies what function to use to perform a check.  It will
+C<$check> specifies what function to use to perform a check.  It will
 be used to test an individual element to determine whether it passes
-or fails a check.  This is described below in the CHECK FUNCTION section.
+or fails a check.  This is described below in the L</"CHECK FUNCTION"> section.
 
-$check_opts is a hashref that contains options specifying exactly how
+C<$check_opts> is a hashref that contains options specifying exactly how
 the check is to be performed, and it will be passed to the check
-function.  This is described more fully below in the CHECK OPTIONS
+function.  This is described more fully below in the L</"CHECK OPTIONS">
 section.
 
 =back
@@ -130,7 +130,7 @@ The simplest form is a listref.  For example:
 
 Many tests do not require any more than this.  For these, elements
 that pass are returned also as a listref.  Order is NOT preserved
-in the output ($pass and $fail).
+in the output (C<$pass> and C<$fail>).
 
 Some tests however rely on a description of each element, and
 for these, the data is passed in as a hashref where each key is
@@ -164,15 +164,15 @@ an element, or multiple checks.
 All check functions take the same set of arguments, and all return the
 same set of values.
 
-The $check argument in the B<check> method provides a pointer to where
+The C<$check> argument in the B<check> method provides a pointer to where
 the check function can be found.
 
-$check can be a coderef, in which case you are passing the check
-function in directly.  Alternately, $check can be a string naming the
+C<$check> can be a coderef, in which case you are passing the check
+function in directly.  Alternately, C<$check> can be a string naming the
 check function, or the namespace where it is found.
 
-If $check is a string, the Data::Checker framework will look for a check
-function based on that string.  As an example, if $check is B<Foo::Bar>,
+If C<$check> is a string, the Data::Checker framework will look for a check
+function based on that string.  As an example, if C<$check> is B<Foo::Bar>,
 the following locations will be examined to see if they are a function:
 
    Foo::Bar
@@ -182,11 +182,11 @@ the following locations will be examined to see if they are a function:
    Data::Checker::Foo::Bar
    Data::Checker::Foo::Bar::check
 
-where CALLER is the package of the calling routine.  The first one
+where B<CALLER> is the package of the calling routine.  The first one
 which refers to a function will be used.  The appropriate module will
 be loaded as necessary.
 
-A check function always called as follows:
+A check function is always called as follows:
 
    ($element,$err,$warn,$info) =
      FUNCTION($obj,$element,$description,$check_opts);
@@ -197,27 +197,27 @@ The arguments to the check function are:
 
 =item $obj
 
-$obj is the Data::Checker object that was created, and is passed in to
+C<$obj> is the Data::Checker object that was created, and is passed in to
 provide the check function some useful methods provided by the
-framework.  These functions are described below in the CHECK FUNCTION
-METHODS
+framework.  These functions are described below in the
+L</"CHECK FUNCTION METHODS">
 
 =item $element, $description
 
-$element is the element being tested, and $description is the description
+C<$element> is the element being tested, and C<$description> is the description
 of that element.
 
-If the list of elements was specified as a listref, $element will be one
-value from that listref and $description will be undef.
+If the list of elements was specified as a listref, C<$element> will be one
+value from that listref and C<$description> will be undef.
 
-If the list of elements was specified as a hashref, $element will be one
-of the keys from that hashref and $description will be the value of that
+If the list of elements was specified as a hashref, C<$element> will be one
+of the keys from that hashref and C<$description> will be the value of that
 key.
 
 =item $check_opts
 
-$check_opts is the hashref that was passed in to the B<check> method
-and is described in the next section.
+C<$check_opts> is the hashref that was passed in to the B<check> method
+and is described in the L</"CHECK OPTIONS"> section.
 
 =back
 
@@ -258,7 +258,7 @@ check function, but the general form is:
                                      OPT_A2 => VAL_A2, ... }
                    ... }
 
-There are two types of keys in $check_opts: ones which sets global
+There are two types of keys in C<$check_opts>: ones which sets global
 options (which apply to all possible checks that could be done), and
 ones which define exactly what types of checks are performed and
 options that apply only to that check.
@@ -309,22 +309,26 @@ check function.
 
    $flag = $obj->check_performed($check_opts,$label);
 
-This checks $check_opts for the existance of a key named $label indicating
+This checks C<$check_opts> for the existance of a key named C<$label> indicating
 that that check should be performed.
 
 =item check_level
 
    $level = $obj->check_level($check_opts [,$label]);
 
-Check to see what level ('err', 'info', or 'warn');
+Check to see what level ('err', 'info', or 'warn') the check is.  If a check
+is 'err' level, then if it fails, it produces an error.  If it is 'warn'
+level, it produces a warning, but the check is marked as a passing.  If it is
+'info', then if the check fails, it produces an informational message, but the
+check is marked as passing.
 
 =item check_option
 
    $val = $obj->check_option($check_opts,$opt [,$default [,$label]]);
 
-This returns the value of the given option ($opt) for this check ($label).
+This returns the value of the given option (C<$opt>) for this check (C<$label>).
 
-If the option is not found, $default is returned (if it is given).
+If the option is not found, C<$default> is returned (if it is given).
 
 =item check_message
 
@@ -335,7 +339,7 @@ This produces a message indicating that the check failed and stores it
 in the appropriate listref.
 
 If the 'message' option is available, that message is used.  Otherwise,
-$default_message will be used.
+C<$default_message> will be used.
 
 The message can be a string or a listref (a multi-line message).  The
 string __ELEMENT__ will be replaced by the element being tested.
@@ -346,24 +350,25 @@ string __ELEMENT__ will be replaced by the element being tested.
                      $std_fail,$negate_fail,
                      $err,$warn,$info);
 
-This will test to see if a check passed or failed.  It takes a value ($value)
+This will test to see if a check passed or failed.  It takes a value (C<$value>)
 and if it evaluates to true, then by default the check passes (unless the
 'negate' option is present in which case it fails).
 
-The $std_fail is a message (either a string or a listref of strings) that
-will be given when the check fails.  $negate_fail is a similar message
-that will be given when the check fails but the 'negate' option is present.
+The C<$std_fail> is a message (either a string or a listref of strings) that
+will be given when the check fails and the 'negate' option is not set.
+C<$negate_fail> is a similar message that will be given when the check fails
+but the 'negate' option is set.
 
-$err, $warn, and $info are listrefs containing the messages.
+C<$err>, C<$warn>, and C<$info> are listrefs containing the messages.
 
-If $err is non-empty, an error has occurred.
+If C<$err> is non-empty, an error has occurred.
 
-If the $negate_fail empty is empty, the 'negate' option will be
+If the C<$negate_fail> empty is empty, the 'negate' option will be
 ignored.  This is typically used to test an element to see if it is
 the right type of data for this check.  If it isn't, other types of
 checks are typically not able to run.
 
-If $label is empty, the test is always performed.
+If C<$label> is empty, the test is always performed.
 
 =back
 
@@ -375,15 +380,15 @@ None known.
 
 =over 4
 
-=item Data::Checker::DNS
+=item L<Data::Checker::DNS>
 
 Predefined DNS checks.
 
-=item Data::Checker::Ping
+=item L<Data::Checker::Ping>
 
 Predefined checks to see if a host reponds to pings.
 
-=item Data::Checker::IP
+=item L<Data::Checker::IP>
 
 Predefined checks to see if an element is a valid IP.
 

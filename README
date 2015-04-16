@@ -84,16 +84,16 @@ BASE METHODS
         notes and warnings about the elements may also be returned.
 
         The data is passed in as a single data structure ($data) as
-        described below in the SPECIFYING DATA section.
+        described below in the "SPECIFYING DATA" section.
 
         $check specifies what function to use to perform a check. It will be
         used to test an individual element to determine whether it passes or
-        fails a check. This is described below in the CHECK FUNCTION
+        fails a check. This is described below in the "CHECK FUNCTION"
         section.
 
         $check_opts is a hashref that contains options specifying exactly
         how the check is to be performed, and it will be passed to the check
-        function. This is described more fully below in the CHECK OPTIONS
+        function. This is described more fully below in the "CHECK OPTIONS"
         section.
 
 SPECIFYING DATA
@@ -159,7 +159,7 @@ CHECK FUNCTION
     refers to a function will be used. The appropriate module will be loaded
     as necessary.
 
-    A check function always called as follows:
+    A check function is always called as follows:
 
        ($element,$err,$warn,$info) =
          FUNCTION($obj,$element,$description,$check_opts);
@@ -169,8 +169,8 @@ CHECK FUNCTION
     $obj
         $obj is the Data::Checker object that was created, and is passed in
         to provide the check function some useful methods provided by the
-        framework. These functions are described below in the CHECK FUNCTION
-        METHODS
+        framework. These functions are described below in the "CHECK
+        FUNCTION METHODS"
 
     $element, $description
         $element is the element being tested, and $description is the
@@ -185,7 +185,7 @@ CHECK FUNCTION
 
     $check_opts
         $check_opts is the hashref that was passed in to the check method
-        and is described in the next section.
+        and is described in the "CHECK OPTIONS" section.
 
     The check function always returns the following values:
 
@@ -263,7 +263,11 @@ CHECK FUNCTION METHODS
     check_level
            $level = $obj->check_level($check_opts [,$label]);
 
-        Check to see what level ('err', 'info', or 'warn');
+        Check to see what level ('err', 'info', or 'warn') the check is. If
+        a check is 'err' level, then if it fails, it produces an error. If
+        it is 'warn' level, it produces a warning, but the check is marked
+        as a passing. If it is 'info', then if the check fails, it produces
+        an informational message, but the check is marked as passing.
 
     check_option
            $val = $obj->check_option($check_opts,$opt [,$default [,$label]]);
@@ -297,9 +301,9 @@ CHECK FUNCTION METHODS
         fails).
 
         The $std_fail is a message (either a string or a listref of strings)
-        that will be given when the check fails. $negate_fail is a similar
-        message that will be given when the check fails but the 'negate'
-        option is present.
+        that will be given when the check fails and the 'negate' option is
+        not set. $negate_fail is a similar message that will be given when
+        the check fails but the 'negate' option is set.
 
         $err, $warn, and $info are listrefs containing the messages.
 

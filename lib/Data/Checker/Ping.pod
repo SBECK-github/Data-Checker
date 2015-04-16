@@ -1,4 +1,4 @@
-# Copyright (c) 2013-2014 Sullivan Beck. All rights reserved.
+# Copyright (c) 2013-2015 Sullivan Beck. All rights reserved.
 # This program is free software; you can redistribute it and/or modify it
 # under the same terms as Perl itself.
 
@@ -17,7 +17,7 @@ Data::Checker::Ping - check data to see if it contains hosts that respong to pin
 
 =head1 DESCRIPTION
 
-This module is meant to be used by the Data::Checker module.
+This module is meant to be used by the L<Data::Checker> module.
 
 One set of checks that is often done on sets of hosts is to check
 that they respond to pings.  This module provides several ping
@@ -30,7 +30,7 @@ related checks that can be performed.
 =item B<check>
 
 This is the only function provided by this module, and it is
-intended to be used by the Data::Checker module.
+intended to be used by the L<Data::Checker> module.
 
 =back
 
@@ -45,7 +45,7 @@ specify the checks are:
 =item tcp, udp, icmp, stream, syn, external
 
 These specify what protocol to use for sending a ping.  The default
-is to use tcp.  Refer to the Net::Ping manual for information about
+is to use tcp.  Refer to the L<Net::Ping> manual for information about
 each.
 
 =back
@@ -72,7 +72,7 @@ All examples include the following lines:
 
    ($pass,$fail,$info,$warn) = $obj->check($data,"Ping",$opts);
 
-The value of $data and $opts is listed below in the examples.
+The value of C<$data> and C<$opts> is listed below in the examples.
 
 =over 4
 
@@ -94,8 +94,7 @@ None known.
 
 =head1 SEE ALSO
 
-Data::Checker
-Net::Ping
+L<Data::Checker>, L<Net::Ping>
 
 =head1 LICENSE
 

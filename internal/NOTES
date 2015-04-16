@@ -9,3 +9,13 @@ Set the release version
       mv z $i
    done
 
+#########################################################################
+Update the copyright
+
+   y=`date '+%Y'`
+   for i in `find . -type f | xargs egrep -l 'Copyright \(c\) ....\-.... Sullivan Beck'` ;do
+     sed -e "s,\(Copyright (c) ....\)\-.... \(Sullivan Beck\),\1-$y \2," $i > z
+     mv z $i
+   done
+
+

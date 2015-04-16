@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2014 Sullivan Beck. All rights reserved.
+# Copyright (c) 2014-2015 Sullivan Beck. All rights reserved.
 # This program is free software; you can redistribute it and/or modify it
 # under the same terms as Perl itself.
 
@@ -17,7 +17,7 @@ Data::Checker::IP - check data to see if it is a valid IP
 
 =head1 DESCRIPTION
 
-This module is meant to be used by the Data::Checker module.
+This module is meant to be used by the L<Data::Checker> module.
 
 One set of checks that is often done is to see if a piece of
 data is a valid IP.  A valid IP might be a string that simply
@@ -33,18 +33,18 @@ This module performs several IP releated checks.
 =item B<check>
 
 This is the only function provided by this module, and it is
-intended to be used by the Data::Checker module.
+intended to be used by the L<Data::Checker> module.
 
 =back
 
 =head1 CHECKS OPTIONS
 
-The B<$check_opts> hashref defines exactly what IP checks to
+The C<$check_opts> hashref defines exactly what IP checks to
 perform, and some options used by those checks.  Known keys that
 specify the checks are:
 
 This checks elements to see if they are valid IPv4 or IPv6 addresses
-using the NetAddr::IP module.  In addition, it may perform any of the
+using the L<NetAddr::IP> module.  In addition, it may perform any of the
 following additional checks:
 
 =over 4
@@ -65,7 +65,7 @@ that network.
 =item B<in_network>
 
 The IP must belong to the network specified by the B<network> option.
-The value must be any network definition accepted by NetAddr::IP.
+The value must be any network definition accepted by L<NetAddr::IP>.
 
 =back
 
@@ -90,7 +90,7 @@ to if the negate option is used) with the B<in_network> check.
 
    ($pass,$fail,$info,$warn) = $obj->check($data,"IP",$opts);
 
-The value of $data and $opts is listed below in the examples.
+The value of C<$data> and C<$opts> is listed below in the examples.
 
 =over 4
 
@@ -122,8 +122,7 @@ None known.
 
 =head1 SEE ALSO
 
-Data::Checker
-NetAddr::IP
+L<Data::Checker>, L<NetAddr::IP>
 
 =head1 LICENSE
 

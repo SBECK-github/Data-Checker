@@ -1,4 +1,4 @@
-# Copyright (c) 2013-2014 Sullivan Beck. All rights reserved.
+# Copyright (c) 2013-2015 Sullivan Beck. All rights reserved.
 # This program is free software; you can redistribute it and/or modify it
 # under the same terms as Perl itself.
 
@@ -17,11 +17,12 @@ Data::Checker::DNS - check data to see if it is valid in DNS
 
 =head1 DESCRIPTION
 
-This module is meant to be used by the Data::Checker module.
+This module is meant to be used by the L<Data::Checker> module.
 
 One set of checks that is often done on sets of hostnames or IPs is to
 check that they are defined in DNS.  This module provides several DNS
-related checks that can be performed.
+related checks that can be performed.  It uses the L<Net::DNS> module
+to actually do the checks.
 
 =head1 FUNCTIONS
 
@@ -30,13 +31,13 @@ related checks that can be performed.
 =item B<check>
 
 This is the only function provided by this module, and it is
-intended to be used by the Data::Checker module.
+intended to be used by the L<Data::Checker> module.
 
 =back
 
 =head1 CHECKS OPTIONS
 
-The B<$check_opts> hashref defines exactly what DNS checks to perform,
+The C<$check_opts> hashref defines exactly what DNS checks to perform,
 and some options used by those checks.  Known keys that specify the
 checks are:
 
@@ -58,7 +59,7 @@ unqualifed if the 'negate' option is given).
 If this key is present, the hostname or IP is tested to see if it is
 in DNS.  If it is defined in DNS, it passes.
 
-This is the default check done, and if B<$check_opts> is not passed
+This is the default check done, and if C<$check_opts> is not passed
 in, this check will be performed.
 
 =item expected_ip, expected_domain, expected_hostname
@@ -68,14 +69,14 @@ to make sure that the values are as expected.
 
 The expected value should be stored in the description passed to the check
 function (see Data::Checker for more information), or in the 'value' option
-in $check_opts.
+in C<$check_opts>.
 
 If the description is a hashref and there are keys 'ip', 'domain', or
 'hostname' respectively, the values are either a string or a listref
 of strings, and the value in DNS must match one of those strings.
 
 Alternately, if the description does not exist or does not contain
-those keys, the 'value' option in $check_opts will be used.
+those keys, the 'value' option in C<$check_opts> will be used.
 
 If the 'negate' option is included, the values are restricted value
 which cannot be used in DNS.
@@ -104,7 +105,7 @@ All examples include the following lines:
 
    ($pass,$fail,$info,$warn) = $obj->check($data,"DNS",$opts);
 
-The value of $data and $opts is listed below in the examples.
+The value of C<$data> and C<$opts> is listed below in the examples.
 
 =over 4
 
@@ -142,8 +143,9 @@ Current DNS shows:
 
 The test:
 
-   $data = { 'cpan.org' => { 'ip'  => '207.171.7.91' },
-             'blogs.perl.org' => { 'ip'  => '100.101.102.103' } };
+   $data = { 'cpan.org'       => { 'ip'  => '207.171.7.91' },
+             'blogs.perl.org' => { 'ip'  => '100.101.102.103' }
+           };
    $opts = { 'dns' => undef,
              'expected_ip' => undef };
 
@@ -160,7 +162,7 @@ None known.
 
 =head1 SEE ALSO
 
-Data::Checker
+L<Data::Checker>, L<Net::DNS>
 
 =head1 LICENSE
 
