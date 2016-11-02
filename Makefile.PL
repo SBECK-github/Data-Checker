@@ -44,7 +44,7 @@ if ($EU_MM_V < 6.64) {
 
 WriteMakefile(
    NAME             => "Data::Checker",
-   VERSION          => "1.07",
+   VERSION          => "1.08",
    ABSTRACT         => "a framework for checking data validity",
    LICENSE          => "perl",
    ($EU_MM_V >= 6.48
@@ -65,23 +65,23 @@ WriteMakefile(
           provides     => {
              'Data::Checker' => {
                 file    => 'Checker.pm',
-                version => '1.07',
+                version => '1.08',
              },
              'Data::Checker::DNS' => {
                 file    => 'DNS.pm',
-                version => '1.07',
+                version => '1.08',
              },
              'Data::Checker::Date' => {
                 file    => 'Date.pm',
-                version => '1.07',
+                version => '1.08',
              },
              'Data::Checker::IP' => {
                 file    => 'IP.pm',
-                version => '1.07',
+                version => '1.08',
              },
              'Data::Checker::Ping' => {
                 file    => 'Ping.pm',
-                version => '1.07',
+                version => '1.08',
              },
 
           },
