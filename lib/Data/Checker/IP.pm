@@ -1,5 +1,5 @@
 package Data::Checker::IP;
-# Copyright (c) 2014-2015 Sullivan Beck. All rights reserved.
+# Copyright (c) 2014-2016 Sullivan Beck. All rights reserved.
 # This program is free software; you can redistribute it and/or modify it
 # under the same terms as Perl itself.
 

@@ -1,26 +1,17 @@
 #!/usr/bin/perl -w
 
-BEGIN {
-  use Test::Inter;
-  $t = new Test::Inter 'Ping tests';
-}
-
+use Test::Inter;
+$t = new Test::Inter 'Parallel (0) date tests';
 $testdir = '';
 $testdir = $t->testdir();
 
-use Net::Ping::External;
-
 use Data::Checker;
 $obj   = new Data::Checker;
-
-# Don't run tests for installs
-unless ($ENV{RELEASE_TESTING}) {
-   $t->skip_all("PING testing: disabled for installation");   
-}
+$obj->parallel(0);
 
 sub test {
    my($data,$opts) = @_;
-   my($pass,$fail,$info,$warn) = $obj->check($data,"Ping",$opts);
+   my($pass,$fail,$info,$warn) = $obj->check($data,"Date",$opts);
    my @out = ("PASS");
    if (ref($pass) eq 'ARRAY') {
       push(@out,sort @$pass);
@@ -48,12 +39,13 @@ sub test {
 
 $tests=q(
 
-[ cpansearch.perl.org aaa.bbb.ccc ] { external __undef__ }
+[ now 2016-01-01-12:00:00 some-string ] { }
    =>
    PASS
-   cpansearch.perl.org
+   2016-01-01-12:00:00
+   now
    FAIL
-   'aaa.bbb.ccc Host does not respond to external pings'
+   'some-string Not a valid date'
    INFO
    WARN
 

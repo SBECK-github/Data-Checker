@@ -1,5 +1,5 @@
 package Data::Checker;
-# Copyright (c) 2013-2015 Sullivan Beck. All rights reserved.
+# Copyright (c) 2013-2016 Sullivan Beck. All rights reserved.
 # This program is free software; you can redistribute it and/or modify it
 # under the same terms as Perl itself.
 
@@ -134,37 +134,49 @@ sub check {
 }
 
 sub _check_parallel {
-   my($self,$data,$func,$opts) = @_;
-   # my(@pass,%fail,%notice);
+   my($self,$data,$wantlist,$func,$opts) = @_;
+   my(%pass,%fail,%info,%warn);
+   my @ele      = keys %$data;
+   my $max_proc = ($$self{'parallel'} > 1 ? $$self{'parallel'} : @ele);
 
-   # my @ele      = keys %$data;
-   # my $max_proc = ($$self{'parallel'} > 1 ? $$self{'parallel'} : @ele);
+   my $manager = Parallel::ForkManager->new($max_proc);
+   $manager->run_on_finish
+     (
+      sub {
+         my($pid,$exit_code,$id,$signal,$core_dump,$funcdata) = @_;
+         my($ele,$err,$warn,$info) = @$funcdata;
 
-   # my $manager = Parallel::ForkManager->new($max_proc);
-   # $manager->run_on_finish(
-   #                         sub {
-   #                            my($pid,$exit_code,$id,$signal,$core_dump,$data) = @_;
-   #                            my($ele,$err,$note) = @$data;
-   #                            if ($err) {
-   #                               $fail{$ele} = $err;
-   #                            } else {
-   #                               $notice{$ele} = $note  if ($note);
-   #                               push(@pass,$ele);
-   #                            }
-   #                         }
-   #                        );
+         if (defined($err)  &&  @$err) {
+            $fail{$ele} = $err;
+         } else {
+            $pass{$ele} = $$data{$ele};
+         }
 
-   # VAL:
-   # foreach my $val (sort keys %{ $valsref }) {
-   #    $manager->start and next;
+         if (defined($warn)  &&  @$warn) {
+            $warn{$ele} = $warn;
+         }
+         if (defined($info)  &&  @$info) {
+            $info{$ele} = $info;
+         }
+      });
 
-   #    my($ele,$err,$note) = &$func($self,$val,$$valsref{$val},$opts,@args);
+   ELE:
+   foreach my $ele (sort keys %$data) {
+      $manager->start and next;
 
-   #    $manager->finish(0,[$ele,$err,$note]);
-   # }
+      my($element,$err,$warn,$info) = &$func($self,$ele,$$data{$ele},$opts);
 
-   # $manager->wait_all_children();
-   # return (\@pass,\%fail,\%notice);
+      $manager->finish(0,[$element,$err,$warn,$info]);
+   }
+
+   $manager->wait_all_children();
+
+   if ($wantlist) {
+      my @pass = sort keys %pass;
+      return (\@pass,\%fail,\%warn,\%info);
+   } else {
+      return (\%pass,\%fail,\%warn,\%info);
+   }
 }
 
 sub _check_serial {

@@ -25,8 +25,16 @@ Any suggestions, bug reports, or donations :-) should be sent to me.
   - Fixed a problem related to the new .git directory that prevented
     it from installing correctly.
 
-1.05  2015-04-16
+1.05  2014-11-24
   - Fixed dns.t file.  Thanks to two CPAN testers (Nigel Horne and
     Chris Williams) for assisting me in finding the offending test.
+
+1.06  2015-04-16
   - Improved POD formatting.
 
+1.07  2016-11-02
+  - Disabled PING tests during installation (they are too unstable)
+  - Added date checks.
+  - Fixed parallel tests.
+
+1.08

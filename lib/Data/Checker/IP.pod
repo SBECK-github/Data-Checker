@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2015 Sullivan Beck. All rights reserved.
+# Copyright (c) 2014-2016 Sullivan Beck. All rights reserved.
 # This program is free software; you can redistribute it and/or modify it
 # under the same terms as Perl itself.
 
@@ -39,13 +39,12 @@ intended to be used by the L<Data::Checker> module.
 
 =head1 CHECKS OPTIONS
 
+This checks elements to see if they are valid IPv4 or IPv6 addresses
+using the L<NetAddr::IP> module.
+
 The C<$check_opts> hashref defines exactly what IP checks to
 perform, and some options used by those checks.  Known keys that
 specify the checks are:
-
-This checks elements to see if they are valid IPv4 or IPv6 addresses
-using the L<NetAddr::IP> module.  In addition, it may perform any of the
-following additional checks:
 
 =over 4
 

@@ -132,6 +132,15 @@ $tests=q(
    INFO
    WARN
 
+[ 207.171.7.91 ]
+{ nameservers 128.227.30.254 }
+   =>
+   PASS
+   207.171.7.91
+   FAIL
+   INFO
+   WARN
+
 );
 
 $t->tests(func  => \&test,

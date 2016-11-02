@@ -1,34 +1,42 @@
 ---
 abstract: 'a framework for checking data validity'
 author:
-  - 'Sullivan Beck <sbeck@cpan.org>'
+  - 'Sullivan Beck (sbeck@cpan.org)'
 build_requires:
-  Module::Build: '0.21'
+  ExtUtils::MakeMaker: '0'
   Test::Inter: '0'
   Test::More: '0'
 configure_requires:
-  Module::Build: '0.21'
+  ExtUtils::MakeMaker: '6.30'
 dynamic_config: 1
-generated_by: 'Module::Build version 0.4205, CPAN::Meta::Converter version 2.143240'
+generated_by: 'ExtUtils::MakeMaker version 7.1, CPAN::Meta::Converter version 2.150010'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: '1.4'
 name: Data-Checker
+no_index:
+  directory:
+    - t
+    - inc
 provides:
   Data::Checker:
-    file: lib/Data/Checker.pm
+    file: Checker.pm
     version: '1.07'
   Data::Checker::DNS:
-    file: lib/Data/Checker/DNS.pm
+    file: DNS.pm
+    version: '1.07'
+  Data::Checker::Date:
+    file: Date.pm
     version: '1.07'
   Data::Checker::IP:
-    file: lib/Data/Checker/IP.pm
+    file: IP.pm
     version: '1.07'
   Data::Checker::Ping:
-    file: lib/Data/Checker/Ping.pm
+    file: Ping.pm
     version: '1.07'
 requires:
+  Date::Manip: '0'
   Module::Loaded: '0'
   Net::DNS: '0'
   Net::Ping: '0'
@@ -38,6 +46,6 @@ requires:
   Parallel::ForkManager: '0'
   perl: '5.008'
 resources:
-  license: http://dev.perl.org/licenses/
-  repository: https://github.com/SBECK-github/Data-Checker
+  repository: git://github.com/SBECK-github/Data-Checker.git
 version: '1.07'
+x_serialization_backend: 'CPAN::Meta::YAML version 0.018'
