@@ -34,7 +34,10 @@ Any suggestions, bug reports, or donations :-) should be sent to me.
 
 1.07  2016-11-02
   - Disabled PING tests during installation (they are too unstable)
+    RT 118541
   - Added date checks.
   - Fixed parallel tests.
 
 1.08
+  - Cleaned up some tests.
+

@@ -8,10 +8,11 @@ BEGIN {
 $testdir = '';
 $testdir = $t->testdir();
 
+$t->use_ok("Net::DNS",'feature');
+$t->skip_all('DNS tests ignored (install Net::DNS to test)','Net::DNS');
+
 use Data::Checker;
 $obj   = new Data::Checker;
-
-use Net::DNS;
 
 # Net::DNS fails with some versions:
 #   Okay: 0.74 0.77 0.78 0.80 (?)

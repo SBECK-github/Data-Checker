@@ -5,6 +5,9 @@ $t = new Test::Inter 'Date tests';
 $testdir = '';
 $testdir = $t->testdir();
 
+$t->use_ok("Date::Manip",'feature');
+$t->skip_all('Date tests ignored (install Date::Manip to test)','Date::Manip');
+
 use Data::Checker;
 $obj   = new Data::Checker;
 

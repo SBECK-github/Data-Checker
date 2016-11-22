@@ -8,7 +8,8 @@ BEGIN {
 $testdir = '';
 $testdir = $t->testdir();
 
-use Net::Ping::External;
+$t->use_ok("Net::Ping::External",'feature');
+$t->skip_all('Ping tests ignored (install Net::Ping::External to test)','Net::Ping::External');
 
 use Data::Checker;
 $obj   = new Data::Checker;

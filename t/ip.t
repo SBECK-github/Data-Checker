@@ -5,6 +5,12 @@ $t = new Test::Inter 'IP tests';
 $testdir = '';
 $testdir = $t->testdir();
 
+$t->use_ok("NetAddr::IP",'feature');
+$t->skip_all('IP tests ignored (install NetAddr::IP to test)','NetAddr::IP');
+
+$t->use_ok("NetAddr::IP::Lite",'feature');
+$t->skip_all('IP tests ignored (install NetAddr::IP::Lite to test)','NetAddr::IP::Lite');
+
 use Data::Checker;
 $obj   = new Data::Checker;
 
