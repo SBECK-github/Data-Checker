@@ -22,19 +22,19 @@ no_index:
 provides:
   Data::Checker:
     file: Checker.pm
-    version: '1.08'
+    version: '1.09'
   Data::Checker::DNS:
     file: DNS.pm
-    version: '1.08'
+    version: '1.09'
   Data::Checker::Date:
     file: Date.pm
-    version: '1.08'
+    version: '1.09'
   Data::Checker::IP:
     file: IP.pm
-    version: '1.08'
+    version: '1.09'
   Data::Checker::Ping:
     file: Ping.pm
-    version: '1.08'
+    version: '1.09'
 requires:
   Date::Manip: '0'
   Module::Loaded: '0'
@@ -47,5 +47,5 @@ requires:
   perl: '5.008'
 resources:
   repository: git://github.com/SBECK-github/Data-Checker.git
-version: '1.08'
+version: '1.09'
 x_serialization_backend: 'CPAN::Meta::YAML version 0.018'
