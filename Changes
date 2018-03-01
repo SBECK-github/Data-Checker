@@ -38,6 +38,7 @@ Any suggestions, bug reports, or donations :-) should be sent to me.
   - Added date checks.
   - Fixed parallel tests.
 
-1.08
-  - Cleaned up some tests.
+1.08  2016-11-22
+  - Cleaned up some tests.  RT 118881
 
+1.09
